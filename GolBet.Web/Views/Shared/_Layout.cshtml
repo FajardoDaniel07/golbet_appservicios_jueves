@@ -7,27 +7,231 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GolBet.Web.styles.css" asp-append-version="true" />
+
+    <!-- Tipografías: condensada deportiva para branding + sans limpia para lectura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+   <style>
+        :root {
+            --gb-night: #0B1F17;
+            --gb-night-2: #102A1F;
+            --gb-gold: #D4A537;
+            --gb-gold-dim: #A9822A;
+            --gb-pitch: #1F6F4A;
+            --gb-chalk: #F2EFE9;
+            --gb-muted: #8FA396;
+        }
+
+        body {
+            background-color: var(--gb-night);
+            color: var(--gb-chalk);
+            font-family: 'Inter', sans-serif;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(212,165,55,0.035) 0px, rgba(212,165,55,0.035) 1px, transparent 1px, transparent 120px),
+                radial-gradient(circle at 50% -10%, rgba(31,111,74,0.35), transparent 60%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--gb-chalk);
+        }
+
+        a {
+            color: var(--gb-gold);
+        }
+        a:hover {
+            color: var(--gb-chalk);
+        }
+
+        .navbar.bg-success {
+            background-color: var(--gb-night-2) !important;
+            border-bottom: 2px solid var(--gb-gold) !important;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--gb-chalk) !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: letter-spacing 0.35s ease;
+        }
+
+        .navbar-brand:hover {
+            letter-spacing: 0.22em;
+        }
+
+        .navbar-brand::before {
+            content: "";
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 2px solid var(--gb-gold);
+            background: radial-gradient(circle at 35% 30%, #ffffff 0%, #d8d8d8 45%, #1a1a1a 100%);
+            transition: transform 0.4s ease;
+        }
+
+        .navbar-brand:hover::before {
+            transform: rotate(180deg);
+        }
+
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            color: var(--gb-muted) !important;
+            position: relative;
+            padding-bottom: 4px !important;
+            transition: letter-spacing 0.25s ease, color 0.25s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gb-gold) !important;
+            letter-spacing: 0.13em;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gb-gold);
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border-color: var(--gb-gold) !important;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(70%) sepia(50%) saturate(500%) hue-rotate(360deg);
+        }
+
+        .btn-primary,
+        .btn-success {
+            background-color: var(--gb-gold) !important;
+            border-color: var(--gb-gold) !important;
+            color: var(--gb-night) !important;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            border-radius: 999px;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.2s ease, letter-spacing 0.25s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-success:hover {
+            background-color: var(--gb-chalk) !important;
+            border-color: var(--gb-chalk) !important;
+            color: var(--gb-night) !important;
+            transform: translateY(-1px);
+            letter-spacing: 0.12em;
+        }
+
+        .btn-outline-primary,
+        .btn-outline-success {
+            border-radius: 999px;
+            border-color: var(--gb-gold) !important;
+            color: var(--gb-gold) !important;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-success:hover {
+            background-color: var(--gb-gold) !important;
+            color: var(--gb-night) !important;
+        }
+
+        .btn-secondary {
+            background-color: transparent !important;
+            border: 1px solid var(--gb-muted) !important;
+            color: var(--gb-muted) !important;
+            border-radius: 999px;
+        }
+
+        main.container {
+            background-color: rgba(16, 42, 31, 0.35);
+            border: 1px solid rgba(212, 165, 55, 0.15);
+            border-radius: 6px;
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+
+        footer.footer {
+            background-color: var(--gb-night-2);
+            border-top: 2px solid var(--gb-gold) !important;
+            color: var(--gb-muted) !important;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            padding: 1.25rem 0;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GolBet.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success border-bottom mb-3">
+
+            <div class="container">
+
+                <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
+
+                    GolBet
+
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarMain">
+
                     <span class="navbar-toggler-icon"></span>
+
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+
+                    <ul class="navbar-nav me-auto">
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a>
+
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
                     </ul>
+
+                    <!-- Aquí irá el enlace a Partidos (Módulo 3) y la sesión (Módulo 7) -->
+
                 </div>
+
             </div>
+
         </nav>
     </header>
     <div class="container">
@@ -37,9 +241,13 @@
     </div>
 
     <footer class="border-top footer text-muted">
+
         <div class="container">
-            &copy; 2026 - GolBet.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+            &copy; @DateTime.Now.Year - GolBet · Simulador académico
+
         </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
