@@ -1,0 +1,11 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "GolBet.Web\\GolBet.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

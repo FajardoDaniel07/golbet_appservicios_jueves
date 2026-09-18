@@ -173,6 +173,49 @@
             color: var(--gb-muted) !important;
             border-radius: 999px;
         }
+            /* Cards */
+            .card {
+                background-color: var(--gb-night-2);
+                border: 1px solid rgba(212, 165, 55, 0.15);
+                color: var(--gb-chalk);
+            }
+
+            .card-header,
+            .card-footer {
+                background-color: rgba(212, 165, 55, 0.06);
+                border-color: rgba(212, 165, 55, 0.15) !important;
+            }
+
+            /* Texto muted de Bootstrap ilegible sobre fondo oscuro */
+            .text-muted {
+                color: var(--gb-muted) !important;
+            }
+
+            /* Badges de estado de partido */
+            .badge.bg-primary {
+                background-color: var(--gb-pitch) !important;
+                color: var(--gb-chalk) !important;
+            }
+
+            .badge.bg-warning {
+                background-color: var(--gb-gold) !important;
+                color: var(--gb-night) !important;
+            }
+
+            .badge.bg-secondary {
+                background-color: rgba(143, 163, 150, 0.25) !important;
+                color: var(--gb-muted) !important;
+            }
+
+            /* Cajitas de cuotas (border rounded) */
+            .card .border.rounded {
+                border-color: rgba(212, 165, 55, 0.25) !important;
+                background-color: rgba(11, 31, 23, 0.5);
+            }
+
+                .card .border.rounded .fw-bold {
+                    color: var(--gb-gold);
+                }
 
         main.container {
             background-color: rgba(16, 42, 31, 0.35);
@@ -193,6 +236,7 @@
             padding: 1.25rem 0;
             margin-top: 3rem;
         }
+
     </style>
 </head>
 <body>

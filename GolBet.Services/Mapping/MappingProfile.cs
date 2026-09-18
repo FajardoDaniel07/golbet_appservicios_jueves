@@ -28,6 +28,12 @@ public class MappingProfile : Profile
 
         CreateMap<Match, MatchDto>();
 
+        CreateMap<Match, MatchDetailDto>()
+
+        .ForMember(dto => dto.TotalBets,
+
+               options => options.MapFrom(match => match.Bets.Count));
+
     }
 
 }
