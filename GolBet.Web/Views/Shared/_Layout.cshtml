@@ -217,6 +217,14 @@
                     color: var(--gb-gold);
                 }
 
+            /* Tablas: mismo color de texto que las cards de partidos */
+            .table {
+                --bs-table-hover-color: var(--gb-chalk);
+                --bs-table-hover-bg: rgba(212, 165, 55, 0.08);
+                color: var(--gb-chalk);
+                border-color: rgba(212, 165, 55, 0.15);
+            }
+
         main.container {
             background-color: rgba(16, 42, 31, 0.35);
             border: 1px solid rgba(212, 165, 55, 0.15);
@@ -262,21 +270,30 @@
 
                     <ul class="navbar-nav me-auto">
 
+                       @if (User.IsInRole("Admin")) 
+
+{ 
+
+    <li class="nav-item"> 
+
+        <a class="nav-link" asp-controller="Teams" asp-action="Index">Equipos</a> 
+
+    </li> 
+
+} 
+
+ 
+
+
                         <li class="nav-item">
 
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a>
+                            <a class="nav-link" asp-controller="Matches" asp-action="Index">Partidos</a>
 
                         </li>
 
-
                     </ul>
 
-                    <li class="nav-item">
-                         <a class="nav-link" asp-controller="Teams" asp-action="Index">Equipos</a> 
-
-                        <a class="nav-link" asp-controller="Matches" asp-action="Index">Partidos</a>
-
-                    </li>
+                    <partial name="_LoginPartial" /> 
 
                 </div>
 
