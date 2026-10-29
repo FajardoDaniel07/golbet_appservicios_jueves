@@ -272,15 +272,27 @@
 
                        @if (User.IsInRole("Admin")) 
 
-{ 
 
-    <li class="nav-item"> 
+                        { 
 
-        <a class="nav-link" asp-controller="Teams" asp-action="Index">Equipos</a> 
+                            <li class="nav-item"> 
 
-    </li> 
+                            <a class="nav-link" asp-controller="Teams" asp-action="Index">Equipos</a> 
 
-} 
+                             </li> 
+
+                        }
+                        @if (User.IsInRole("Apostador"))
+
+                        {
+
+                            <li class="nav-item">
+
+                                <a class="nav-link" asp-controller="Bets" asp-action="MyBets">Mis apuestas</a>
+
+                            </li>
+
+                        }
 
  
 
